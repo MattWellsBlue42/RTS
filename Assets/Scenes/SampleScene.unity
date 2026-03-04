@@ -128,12 +128,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 260118787}
-  - component: {fileID: 260118786}
-  - component: {fileID: 260118785}
-  - component: {fileID: 260118784}
   - component: {fileID: 260118789}
   - component: {fileID: 260118788}
   - component: {fileID: 260118791}
+  - component: {fileID: 260118792}
   m_Layer: 0
   m_Name: WorldManager
   m_TagString: Untagged
@@ -141,54 +139,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &260118784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260118783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ea09c265fb7ca34ebc7e121547cd3a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MeshGenerator
---- !u!114 &260118785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260118783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e6b47427252ea048ae222bba373cfc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GridGenerator
-  material: {fileID: 2100000, guid: 4eae3607ba6a51a44b467fff9526e838, type: 2}
-  noiseScale: 0.3
-  heightMultiplier: 1
-  waterPrefab: {fileID: 5030596824455350778, guid: 8dca3300c4b6e1d4dae94771dee706e0, type: 3}
-  tileTypes:
-  - {fileID: 11400000, guid: 5a92b1e4a7d02c54088783678c4f9d11, type: 2}
-  - {fileID: 11400000, guid: a00f3da15539cb341a6d90179f814b4c, type: 2}
-  - {fileID: 11400000, guid: 505a6717c75efd648b10c773ed00a5ee, type: 2}
-  generateHeight: 0
---- !u!114 &260118786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260118783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dadf1f31921c944293b5dd49a2eaf1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WorldManager
-  gridSize: {x: 5, y: 5}
-  tileSize: {x: 20, y: 20}
-  meshSize: 10
 --- !u!4 &260118787
 Transform:
   m_ObjectHideFlags: 0
@@ -283,6 +233,30 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &260118792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260118783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dadf1f31921c944293b5dd49a2eaf1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WorldManager
+  tileTypes:
+  - {fileID: 11400000, guid: 5a92b1e4a7d02c54088783678c4f9d11, type: 2}
+  - {fileID: 11400000, guid: a00f3da15539cb341a6d90179f814b4c, type: 2}
+  - {fileID: 11400000, guid: 505a6717c75efd648b10c773ed00a5ee, type: 2}
+  tileHighlighterPrefab: {fileID: 7106462776028969527, guid: c3e20e7b5cee8584baa090329c26ec48, type: 3}
+  gridSize: {x: 5, y: 5}
+  tileSize: {x: 2, y: 2}
+  cellSize: 1
+  material: {fileID: 2100000, guid: 4eae3607ba6a51a44b467fff9526e838, type: 2}
+  noiseScale: 0.3
+  heightMultiplier: 2
+  generateHeight: 0
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +345,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.27059805, y: 0.6532815, z: -0.27059805, w: 0.6532815}
-  m_LocalPosition: {x: 3, y: 10, z: 15}
+  m_LocalPosition: {x: -2.5, y: 4.5, z: 2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
