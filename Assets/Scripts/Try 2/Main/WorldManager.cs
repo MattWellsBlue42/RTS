@@ -14,6 +14,7 @@ public class WorldManager : MonoBehaviour
     #region Grid Data
     [Header("Grid Settings")]
     [SerializeField] private GameObject tileHighlighterPrefab;
+    [SerializeField] private bool useOldHighlighter = false;
     private bool highlighterSpawned = false;
     private GameObject currentHighlighter;
     [Min(1)]
@@ -50,15 +51,15 @@ public class WorldManager : MonoBehaviour
 
     private void HandleHighlight(Vector3 location)
     {
-        // if (highlighterSpawned)
-        // {
-        //     currentHighlighter.transform.position = location + new Vector3(cellSize * 0.5f, 0.01f, cellSize * 0.5f);
-        // }
-        // else
-        // {
-        //     currentHighlighter = Instantiate(tileHighlighterPrefab, location + new Vector3(cellSize * 0.5f, 0.01f, cellSize * 0.5f), Quaternion.Euler(90, 0, 0));
-        //     highlighterSpawned = true;
-        // }
+        if (highlighterSpawned)
+        {
+            currentHighlighter.transform.position = location + new Vector3(cellSize * 0.5f, 0.01f, cellSize * 0.5f);
+        }
+        else
+        {
+            currentHighlighter = Instantiate(tileHighlighterPrefab, location + new Vector3(cellSize * 0.5f, 0.01f, cellSize * 0.5f), Quaternion.Euler(90, 0, 0));
+            highlighterSpawned = true;
+        }
     }
 
     private void Update()
@@ -83,13 +84,21 @@ public class WorldManager : MonoBehaviour
         {
             Vector2Int currentTile = new Vector2Int(x, y);
 
-            if (lastHoveredTile.HasValue && lastHoveredTile.Value != currentTile)
+            if (useOldHighlighter)
             {
-                meshGenerator.ChangeMeshColorForXY(lastHoveredTile.Value.x, lastHoveredTile.Value.y, Color.black, gridSize, tileSize);
+                HandleHighlight(gridGenerator.GetWorldPosition(x, y));
             }
+            else
+            {
 
-            meshGenerator.ChangeMeshColorForXY(x, y, Color.red, gridSize, tileSize);
-            lastHoveredTile = currentTile;
+                if (lastHoveredTile.HasValue && lastHoveredTile.Value != currentTile)
+                {
+                    meshGenerator.ChangeMeshColorForXY(lastHoveredTile.Value.x, lastHoveredTile.Value.y, Color.black, gridSize, tileSize);
+                }
+
+                meshGenerator.ChangeMeshColorForXY(x, y, Color.red, gridSize, tileSize);
+                lastHoveredTile = currentTile;
+            }
         }
     }
 
